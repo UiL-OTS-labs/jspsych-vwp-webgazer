@@ -19,7 +19,7 @@ let preload = {
 
 let browser_data = {
     type: jsPsychCallFunction,
-    func: uil.browser.getResolutionInfo
+    func: () => uil.browser.getResolutionInfo()
 };
 
 let enter_fullscreen = {
@@ -200,10 +200,10 @@ function getTimeline(stimuli) {
     timeline.push(sound_test_instructions);
     timeline.push(test_audio_looped);
 
-    timeline.push(browser_data);
     timeline.push(camera_instructions);
     timeline.push(init_camera);
     timeline.push(enter_fullscreen);
+    timeline.push(browser_data);
 
     timeline.push(calibration_instructions);
     timeline.push(calibration);
