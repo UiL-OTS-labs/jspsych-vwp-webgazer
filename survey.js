@@ -100,10 +100,6 @@ let survey_multi_choice_block = {
             horizontal: true
         }
     ],
-    on_finish: function(data){
-        let survey_multi_choice = data.responses;
-        data.survey_multi_choice_responses = survey_multi_choice;
-    }
 };
 
 // HTML plugin survey block: questions are in the HTML constant
@@ -111,10 +107,6 @@ let survey_multi_html_block = {
     type: jsPsychSurveyHtmlForm,
     preamble: PREPARE_FOR_SURVEY,
     html: MULTI_CHOICE_HTML,
-    on_finish: function(data){
-        var survey_html_responses = data.responses;
-        data.survey_html_responses = survey_html_responses;
-    }
 };
 
 let survey_review_survey_data = {
