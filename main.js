@@ -12,9 +12,19 @@ let jsPsych = initJsPsych({
     }
 });
 
-let preload = {
-    type: jsPsychPreload,
-    images: [],
+function getPreloadTrial(stimuli) {
+    let images = stimuli.flatMap(stim => {
+        return Object.values(stim).filter(value => typeof (value) == 'string' && value.endsWith('.jpg'));
+    });
+    let audio = stimuli.flatMap(stim => {
+        return Object.values(stim).filter(value => typeof (value) == 'string' && value.endsWith('.wav'));
+    });
+
+    return {
+        type: jsPsychPreload,
+        images: images,
+        audio: audio,
+    };
 }
 
 let browser_data = {
@@ -191,7 +201,7 @@ let end_experiment = {
 function getTimeline(stimuli) {
     let timeline = [];
 
-    timeline.push(preload);
+    timeline.push(getPreloadTrial(stimuli.table));
     timeline.push(start_screen);
 
     timeline.push(consent_procedure);
